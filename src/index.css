@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap');
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
   width: 100vw;
@@ -11,8 +16,12 @@ body {
   background: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
 }
 
+#root {
+  height: 100%;
+}
+
 .header {
-  width: 35%;
+  width: 40%;
   height: 20%;
   padding: 1.2em 2em;
   border: 3px solid hsl(217, 16%, 45%);
@@ -24,4 +33,25 @@ body {
 
 .header h1 {
   line-height: 0.8em;
+}
+
+.options {
+  width: 20vw;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.pentagon-box {
+  position: absolute;
+  z-index: -1;
+}
+
+.pentagon {
+  width: 20vw;
+  aspect-ratio: 1;
+  top: 0;
+  left: 0;
 }
