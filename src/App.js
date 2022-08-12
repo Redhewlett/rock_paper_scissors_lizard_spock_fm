@@ -1,11 +1,11 @@
 import ScoreBoard from './components/ScoreBoard'
-import Options from './components/Options'
+import Game from './components/Game'
 
 function App() {
   return (
     <div className='h-full flex flex-col  justify-around items-center p-10'>
       <ScoreBoard />
-      <Options />
+      <Game />
     </div>
   )
 }
