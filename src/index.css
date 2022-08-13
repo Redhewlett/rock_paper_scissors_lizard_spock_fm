@@ -57,22 +57,52 @@ body {
 }
 
 .game {
-  width: 50%;
-  aspect-ratio: 1;
-  color: white;
+  width: 50vw;
+  height: 20vw;
   text-align: center;
   text-transform: uppercase;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  background-color: blueviolet;
 }
 
-.game > div {
-  width: 50%;
+.picked,
+.announce {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: grey;
+  color: white;
+}
+
+.picked {
+  width: 30%;
+  aspect-ratio: 1;
+  padding: 1vw;
+  gap: 3vw;
+  font-size: x-large;
+}
+
+.announce {
+  width: 35%;
+  aspect-ratio: 1;
+  font-size: 3vw;
+  font-weight: bold;
+}
+
+.announce button {
+  width: 75%;
+  padding: 2% 5%;
+  text-transform: uppercase;
+  font-size: large;
+  font-weight: 100;
+  color: hsl(229, 25%, 31%);
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.15);
+  transition: all ease-in-out 250ms;
+}
+
+.announce button:active {
+  transform: translateY(3px);
 }

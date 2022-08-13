@@ -1,24 +1,23 @@
 import React, { useState, useContext } from 'react'
 import styled from 'styled-components'
-import { PlayerHand } from '../context/PlayerHandContext'
 import { GameState } from '../context/GameContext'
 
 const OptionButton = styled.button`
-  width: 7vw;
+  width: ${(props) => (props.selected ? '13vw' : '7vw')};
   display: flex;
   aspect-ratio: 1;
   background-color: white;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  border: 15px solid ${(props) => (props.border ? props.border : 'black')};
+  border: ${(props) => (props.selected ? '25px' : '15px')} solid ${(props) => (props.border ? props.border : 'black')};
   box-shadow: 0px 4px 0px 1px hsl(217, 16%, 85%) inset, 0px 5px 0px 1px ${(props) => (props.shadow ? props.shadow : 'hsl(217, 16%, 85%)')},
     0px 5px 10px -1px rgba(0, 0, 0, 0.43);
   position: ${(props) => (props.selected ? 'static' : 'absolute')};
 
   :nth-of-type(1) {
-    top: ${(props) => (props.selected ? '0' : '-18%')};
-    left: ${(props) => (props.selected ? '0' : '35%')};
+    top: -18%;
+    left: 35%;
   }
   :nth-of-type(2) {
     top: 25%;
@@ -36,10 +35,13 @@ const OptionButton = styled.button`
     top: 25%;
     left: -15%;
   }
+
+  & img {
+    width: ${(props) => (props.selected ? '5vw' : '')};
+  }
 `
 
 export default function Option(props) {
-  const [playerChoice, setPlayerChoice] = useContext(PlayerHand)
   const [isPlaying, setIsPlaying] = useContext(GameState)
 
   function handleClick(e) {
@@ -50,7 +52,6 @@ export default function Option(props) {
       choice = e.target.alt
     }
 
-    setPlayerChoice(choice)
     setIsPlaying(true)
   }
 

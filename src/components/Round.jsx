@@ -1,24 +1,19 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import Option from './Option'
 import { optionsArray } from '../assets/options'
-import { PlayerHand } from '../context/PlayerHandContext'
+import { GameState } from '../context/GameContext'
 
 export default function Round() {
-  const [playerChoice] = useContext(PlayerHand)
-  let playerIndex
-  function findIndex() {
-    optionsArray.forEach((element, index) => {
-      if (element.name === playerChoice) {
-        playerIndex = index
-      }
-    })
-  }
+  const [isPlaying, setIsPlaying] = useContext(GameState)
 
-  findIndex()
+  //play again
+  function playAgain() {
+    setIsPlaying(false)
+  }
 
   return (
     <>
-      <div>
+      {/* <div className='picked'>
         <p>you picked</p>
         <Option
           selected={true}
@@ -28,18 +23,22 @@ export default function Round() {
         >
           <img src={optionsArray[playerIndex].img} alt={optionsArray[playerIndex].name} />
         </Option>
+      </div> */}
+      <div className='announce'>
+        <p>you lose</p>
+        <button onClick={playAgain}>play again</button>
       </div>
-      <div>
-        <p>you picked</p>
+      {/* <div className='picked'>
+        <p>the house picked</p>
         <Option
           selected={true}
-          id={optionsArray[playerIndex].name}
-          border={optionsArray[playerIndex].borderColor}
-          shadow={optionsArray[playerIndex].shadowColor}
+          id={optionsArray[computerIndex].name}
+          border={optionsArray[computerIndex].borderColor}
+          shadow={optionsArray[computerIndex].shadowColor}
         >
-          <img src={optionsArray[playerIndex].img} alt={optionsArray[playerIndex].name} />
+          <img src={optionsArray[computerIndex].img} alt={optionsArray[computerIndex].name} />
         </Option>
-      </div>
+      </div> */}
     </>
   )
 }

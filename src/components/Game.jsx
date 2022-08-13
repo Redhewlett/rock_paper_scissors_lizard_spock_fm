@@ -3,10 +3,10 @@ import { optionsArray } from '../assets/options'
 import Option from './Option'
 import Pentagon from './Pentagon'
 import Round from './Round'
-import { GameState } from '../context/GameContext'
+import { useGameState } from '../context/GameContext'
 
 export default function Game() {
-  const [isPlaying, setIsPlaying] = useContext(GameState)
+  const [{ isPlaying }] = useGameState()
 
   return (
     <>
