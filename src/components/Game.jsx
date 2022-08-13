@@ -9,19 +9,23 @@ export default function Game() {
   const [isPlaying, setIsPlaying] = useContext(GameState)
 
   return (
-    <section className='options'>
-      <Pentagon />
+    <>
       {isPlaying ? (
-        <Round />
+        <section className='game'>
+          <Round />
+        </section>
       ) : (
-        <div>
-          {optionsArray.map((option, index) => (
-            <Option key={index} id={option.name} border={option.borderColor} shadow={option.shadowColor}>
-              <img src={option.img} alt={option.name} />
-            </Option>
-          ))}
-        </div>
+        <section className='options'>
+          <Pentagon />
+          <div>
+            {optionsArray.map((option, index) => (
+              <Option key={index} id={option.name} border={option.borderColor} shadow={option.shadowColor}>
+                <img src={option.img} alt={option.name} />
+              </Option>
+            ))}
+          </div>
+        </section>
       )}
-    </section>
+    </>
   )
 }

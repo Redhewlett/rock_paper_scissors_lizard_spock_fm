@@ -57,10 +57,22 @@ body {
 }
 
 .game {
-  width: 100%;
+  width: 50%;
   aspect-ratio: 1;
-  background-color: beige;
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: blueviolet;
+}
+
+.game > div {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: grey;
 }
