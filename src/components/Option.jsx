@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
 import styled from 'styled-components'
-import { GameState } from '../context/GameContext'
+// import { useGameState } from '../context/GameContext'
+import useGamePlay from '../contexts/GamePlayContext'
 
 const OptionButton = styled.button`
   width: ${(props) => (props.selected ? '13vw' : '7vw')};
@@ -42,17 +43,16 @@ const OptionButton = styled.button`
 `
 
 export default function Option(props) {
-  const [isPlaying, setIsPlaying] = useContext(GameState)
+  const { toggleIsPlaying, setPlayerHand, setComputerHand } = useGamePlay()
 
   function handleClick(e) {
-    let choice
     if (e.target.id) {
-      choice = e.target.id
+      setPlayerHand(e.target.id)
     } else {
-      choice = e.target.alt
+      setPlayerHand(e.target.alt)
     }
-
-    setIsPlaying(true)
+    setComputerHand()
+    toggleIsPlaying()
   }
 
   return (

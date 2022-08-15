@@ -1,18 +1,18 @@
 import React, { useState, useContext, useEffect } from 'react'
 import Option from './Option'
 import { optionsArray } from '../assets/options'
-import { GameState } from '../context/GameContext'
+import useGamePlay from '../contexts/GamePlayContext'
 
 export default function Round() {
-  const [isPlaying, setIsPlaying] = useContext(GameState)
-
+  const { toggleIsPlaying, playerHand, computerHand } = useGamePlay()
   //play again
   function playAgain() {
-    setIsPlaying(false)
+    toggleIsPlaying()
   }
 
   return (
     <>
+      <p>you chose:{playerHand}</p>
       {/* <div className='picked'>
         <p>you picked</p>
         <Option
@@ -28,17 +28,17 @@ export default function Round() {
         <p>you lose</p>
         <button onClick={playAgain}>play again</button>
       </div>
-      {/* <div className='picked'>
+      <div className='picked'>
         <p>the house picked</p>
         <Option
           selected={true}
-          id={optionsArray[computerIndex].name}
-          border={optionsArray[computerIndex].borderColor}
-          shadow={optionsArray[computerIndex].shadowColor}
+          id={optionsArray[computerHand].name}
+          border={optionsArray[computerHand].borderColor}
+          shadow={optionsArray[computerHand].shadowColor}
         >
-          <img src={optionsArray[computerIndex].img} alt={optionsArray[computerIndex].name} />
+          <img src={optionsArray[computerHand].img} alt={optionsArray[computerHand].name} />
         </Option>
-      </div> */}
+      </div>
     </>
   )
 }
