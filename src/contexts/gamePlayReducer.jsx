@@ -6,7 +6,7 @@ export const initialState = {
 }
 
 const gamePlayReducer = (state, action) => {
-  const { type, playload } = action
+  const { type, payload } = action
   switch (type) {
     case 'TOGGLE_PLAYING':
       return {
@@ -16,12 +16,12 @@ const gamePlayReducer = (state, action) => {
     case 'SET_SCORE':
       return {
         ...state,
-        score: playload
+        score: payload
       }
     case 'SET_PLAYER_HAND':
       return {
         ...state,
-        playerHand: playload
+        playerHand: payload
       }
     case 'SET_COMPUTER_HAND':
       return {

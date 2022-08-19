@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React from 'react'
 import { optionsArray } from '../assets/options'
 import Option from './Option'
 import Pentagon from './Pentagon'
@@ -6,7 +6,7 @@ import Round from './Round'
 import useGamePlay from '../contexts/GamePlayContext'
 
 export default function Game() {
-  const { isPlaying, computerHand, playerHand } = useGamePlay()
+  const { isPlaying } = useGamePlay()
   return (
     <>
       {isPlaying ? (

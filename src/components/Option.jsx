@@ -1,4 +1,3 @@
-import React, { useState, useContext } from 'react'
 import styled from 'styled-components'
 // import { useGameState } from '../context/GameContext'
 import useGamePlay from '../contexts/GamePlayContext'
@@ -46,6 +45,10 @@ export default function Option(props) {
   const { toggleIsPlaying, setPlayerHand, setComputerHand } = useGamePlay()
 
   function handleClick(e) {
+    if (props.disabled) {
+      return
+    }
+
     if (e.target.id) {
       setPlayerHand(e.target.id)
     } else {
@@ -56,7 +59,7 @@ export default function Option(props) {
   }
 
   return (
-    <OptionButton onClick={handleClick} selected={props.selected} id={props.id} border={props.border} shadow={props.shadow}>
+    <OptionButton disabled={props.disabled} onClick={handleClick} selected={props.selected} id={props.id} border={props.border} shadow={props.shadow}>
       {props.children}
     </OptionButton>
   )
