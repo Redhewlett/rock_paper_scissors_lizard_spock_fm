@@ -106,3 +106,7 @@ body {
 .announce button:active {
   transform: translateY(3px);
 }
+
+.rules {
+  letter-spacing: 0.2em;
+}
