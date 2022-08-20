@@ -5,6 +5,7 @@ import Pentagon from './Pentagon'
 import Round from './Round'
 import useGamePlay from '../contexts/GamePlayContext'
 import rules from '../assets/images/image-rules-bonus.svg'
+import close from '../assets/images/icon-close.svg'
 
 export default function Game() {
   const { isPlaying } = useGamePlay()
@@ -37,7 +38,19 @@ export default function Game() {
         <button className='rules uppercase text-white text-lg border-2 rounded-lg py-1 px-8' onClick={displayRules}>
           rules
         </button>
-        {modalOpen ? <img src={rules} alt='game rules' /> : ''}
+        {modalOpen ? (
+          <div className='modal'>
+            <div>
+              <div className='modal-header'>
+                <p>rules</p>
+                <img onClick={displayRules} className='close' src={close} alt='close icon' />
+              </div>
+              <img src={rules} alt='game_rules' />
+            </div>
+          </div>
+        ) : (
+          ''
+        )}
       </div>
     </>
   )
