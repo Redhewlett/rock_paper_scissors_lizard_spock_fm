@@ -1,17 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Option from './Option'
 import { optionsArray } from '../assets/options'
 import useGamePlay from '../contexts/GamePlayContext'
 
 export default function Round() {
-  const { toggleIsPlaying, playerHand, score, setScore, computerHand } = useGamePlay()
+  const { toggleIsPlaying, playerHand, computerHand, compareHands, result } = useGamePlay()
   //play again
   function playAgain() {
     toggleIsPlaying()
-    setScore(score + 1)
   }
-  let playerIndex
 
+  let playerIndex
   function findIndex() {
     optionsArray.forEach((element) => {
       if (element.name === playerHand) {
@@ -21,6 +20,13 @@ export default function Round() {
     })
   }
   findIndex()
+
+  //compare hands and decide winner
+  useEffect(() => {
+    const computer = optionsArray[computerHand].name
+    const player = optionsArray[playerIndex].name
+    compareHands(computer, player)
+  }, [])
 
   return (
     <>
@@ -37,7 +43,7 @@ export default function Round() {
         </Option>
       </div>
       <div className='announce'>
-        <p>you lose</p>
+        <p>{result}</p>
         <button onClick={playAgain}>play again</button>
       </div>
       <div className='picked'>

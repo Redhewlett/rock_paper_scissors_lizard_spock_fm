@@ -2,7 +2,8 @@ export const initialState = {
   score: 0,
   playerHand: 'what?',
   computerHand: undefined,
-  isPlaying: false
+  isPlaying: false,
+  result: undefined
 }
 
 const gamePlayReducer = (state, action) => {
@@ -27,6 +28,11 @@ const gamePlayReducer = (state, action) => {
       return {
         ...state,
         computerHand: Math.floor(Math.random() * 5)
+      }
+    case 'COMPARE_HANDS':
+      return {
+        ...state,
+        result: payload
       }
     default:
       return state
