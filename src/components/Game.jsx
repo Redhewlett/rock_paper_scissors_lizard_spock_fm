@@ -47,6 +47,7 @@ export default function Game() {
               </div>
               <img src={rules} alt='game_rules' />
             </div>
+            <span onClick={displayRules}></span>
           </div>
         ) : (
           ''

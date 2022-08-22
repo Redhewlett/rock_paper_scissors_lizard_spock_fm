@@ -3,7 +3,9 @@ export const initialState = {
   playerHand: 'what?',
   computerHand: undefined,
   isPlaying: false,
-  result: undefined
+  result: undefined,
+  playerWin: false,
+  computerWin: false
 }
 
 const gamePlayReducer = (state, action) => {
@@ -33,6 +35,16 @@ const gamePlayReducer = (state, action) => {
       return {
         ...state,
         result: payload
+      }
+    case 'SET_PLAYER_WIN':
+      return {
+        ...state,
+        playerWin: payload
+      }
+    case 'SET_COMPUTER_WIN':
+      return {
+        ...state,
+        computerWin: payload
       }
     default:
       return state

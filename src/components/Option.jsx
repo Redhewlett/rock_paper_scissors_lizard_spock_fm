@@ -12,8 +12,12 @@ const OptionButton = styled.button`
   border-radius: 50%;
   border: ${(props) => (props.selected ? '25px' : '15px')} solid ${(props) => (props.border ? props.border : 'black')};
   box-shadow: 0px 4px 0px 1px hsl(217, 16%, 85%) inset, 0px 5px 0px 1px ${(props) => (props.shadow ? props.shadow : 'hsl(217, 16%, 85%)')},
-    0px 5px 10px -1px rgba(0, 0, 0, 0.43);
+    0px 5px 10px -1px rgba(0, 0, 0, 0.43) ${(props) => (props.winner ? ',0px 3px 0px 60px rgba(255, 255, 255, 0.062) ,0px 3px 0px 120px rgba(255, 255, 255, 0.034),0px 3px 0px 200px rgba(255, 255, 255, 0.021)' : '')};
   position: ${(props) => (props.selected ? 'static' : 'absolute')};
+  animation-name: ${(props) => (props.winner ? 'radiation' : '')};
+  animation-duration: ${(props) => (props.winner ? '700ms' : '')};
+  animation-timing-function: ${(props) => (props.winner ? 'ease-in-out' : '')};
+  animation-iteration-count: ${(props) => (props.winner ? '' : '')};
 
   :nth-of-type(1) {
     top: -18%;
@@ -39,6 +43,27 @@ const OptionButton = styled.button`
   & img {
     width: ${(props) => (props.selected ? '5vw' : '')};
   }
+
+  @keyframes radiation {
+    0% {
+      box-shadow: 0px 3px 0px 30px rgba(255, 255, 255, 0.062);
+    }
+    25% {
+      box-shadow: 0px 3px 0px 60px rgba(255, 255, 255, 0.062);
+    }
+    50% {
+      box-shadow: 0px 3px 0px 60px rgba(255, 255, 255, 0.062), 0px 3px 0px 60px rgba(255, 255, 255, 0.034);
+    }
+    75% {
+      box-shadow: 0px 3px 0px 60px rgba(255, 255, 255, 0.062), 0px 3px 0px 120px rgba(255, 255, 255, 0.034);
+    }
+    90% {
+      box-shadow: 0px 3px 0px 60px rgba(255, 255, 255, 0.062), 0px 3px 0px 120px rgba(255, 255, 255, 0.034), 0px 3px 0px 120px rgba(255, 255, 255, 0.021);
+    }
+    100% {
+      box-shadow: 0px 3px 0px 60px rgba(255, 255, 255, 0.062), 0px 3px 0px 120px rgba(255, 255, 255, 0.034), 0px 3px 0px 200px rgba(255, 255, 255, 0.021);
+    }
+  }
 `
 
 export default function Option(props) {
@@ -59,7 +84,15 @@ export default function Option(props) {
   }
 
   return (
-    <OptionButton disabled={props.disabled} onClick={handleClick} selected={props.selected} id={props.id} border={props.border} shadow={props.shadow}>
+    <OptionButton
+      disabled={props.disabled}
+      winner={props.winner}
+      onClick={handleClick}
+      selected={props.selected}
+      id={props.id}
+      border={props.border}
+      shadow={props.shadow}
+    >
       {props.children}
     </OptionButton>
   )

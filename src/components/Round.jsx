@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Option from './Option'
 import { optionsArray } from '../assets/options'
 import useGamePlay from '../contexts/GamePlayContext'
 
 export default function Round() {
-  const { toggleIsPlaying, playerHand, computerHand, compareHands, result } = useGamePlay()
+  const { toggleIsPlaying, playerHand, computerHand, compareHands, result, playerWin, computerWin } = useGamePlay()
+  const [revealAnnounce, setRevealAnnounce] = useState(false)
+  const [revealComputerHand, setRevealComputerHand] = useState(false)
   //play again
   function playAgain() {
     toggleIsPlaying()
@@ -26,6 +28,14 @@ export default function Round() {
     const computer = optionsArray[computerHand].name
     const player = optionsArray[playerIndex].name
     compareHands(computer, player)
+    //reveal the computer hand
+    setTimeout(() => {
+      setRevealComputerHand(true)
+    }, 1000)
+    //then show the result
+    setTimeout(() => {
+      setRevealAnnounce(true)
+    }, 2000)
   }, [])
 
   return (
@@ -38,25 +48,35 @@ export default function Round() {
           border={optionsArray[playerIndex].borderColor}
           shadow={optionsArray[playerIndex].shadowColor}
           disabled={true}
+          winner={playerWin}
         >
           <img src={optionsArray[playerIndex].img} alt={optionsArray[playerIndex].name} />
         </Option>
       </div>
-      <div className='announce'>
-        <p>{result}</p>
-        <button onClick={playAgain}>play again</button>
-      </div>
+      {revealAnnounce ? (
+        <div className='announce'>
+          <p>{result}</p>
+          <button onClick={playAgain}>play again</button>
+        </div>
+      ) : (
+        ''
+      )}
       <div className='picked'>
         <p>the house picked</p>
-        <Option
-          selected={true}
-          id={optionsArray[computerHand].name}
-          border={optionsArray[computerHand].borderColor}
-          shadow={optionsArray[computerHand].shadowColor}
-          disabled={true}
-        >
-          <img src={optionsArray[computerHand].img} alt={optionsArray[computerHand].name} />
-        </Option>
+        {revealComputerHand ? (
+          <Option
+            selected={true}
+            id={optionsArray[computerHand].name}
+            border={optionsArray[computerHand].borderColor}
+            shadow={optionsArray[computerHand].shadowColor}
+            disabled={true}
+            winner={computerWin}
+          >
+            <img src={optionsArray[computerHand].img} alt={optionsArray[computerHand].name} />
+          </Option>
+        ) : (
+          <div className='circle-preview w-56 h-56 rounded-full '></div>
+        )}
       </div>
     </>
   )

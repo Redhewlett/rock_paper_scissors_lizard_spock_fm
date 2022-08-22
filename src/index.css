@@ -81,6 +81,7 @@ body {
   padding: 1vw;
   gap: 3vw;
   font-size: x-large;
+  letter-spacing: 0.1em;
 }
 
 .announce {
@@ -88,6 +89,9 @@ body {
   aspect-ratio: 1;
   font-size: 3vw;
   font-weight: bold;
+  animation-name: slideFromLeft;
+  animation-duration: 600ms;
+  animation-timing-function: ease-in-out;
 }
 
 .announce button {
@@ -149,9 +153,16 @@ body {
   margin-top: 9%;
   padding: 2em 2em 4em 2em;
   border-radius: 10px;
-  animation-name: modalAppear;
-  animation-duration: 400ms;
+  animation-name: slideFromLeft;
+  animation-duration: 500ms;
   animation-timing-function: ease-in-out;
+  z-index: 1;
+}
+
+.modal > span {
+  width: 100%;
+  height: 100%;
+  position: absolute;
 }
 
 .close {
@@ -159,7 +170,7 @@ body {
   height: 20px;
 }
 
-@keyframes modalAppear {
+@keyframes slideFromLeft {
   from {
     opacity: 0;
     transform: translateX(-70px);
@@ -168,4 +179,8 @@ body {
     opacity: 1;
     transform: translateX(0px);
   }
+}
+
+.circle-preview {
+  background-color: hsla(0, 0%, 0%, 0.199);
 }
