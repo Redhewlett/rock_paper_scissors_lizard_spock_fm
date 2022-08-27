@@ -75,7 +75,7 @@ export default function Round() {
             <img src={optionsArray[computerHand].img} alt={optionsArray[computerHand].name} />
           </Option>
         ) : (
-          <div className='circle-preview w-56 h-56 rounded-full '></div>
+          <div className='circle-preview w-24 h-24 lg:w-56 lg:h-56 rounded-full '></div>
         )}
       </div>
     </>

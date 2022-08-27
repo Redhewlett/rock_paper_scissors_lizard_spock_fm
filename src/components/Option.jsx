@@ -67,6 +67,8 @@ const OptionButton = styled.button`
   @media screen and (max-width: 375px) {
     width: ${(props) => (props.selected ? '32vw' : '25vw')};
     border: ${(props) => (props.selected ? '15px' : '10px')} solid ${(props) => (props.border ? props.border : 'black')};
+    box-shadow: 0px 4px 0px 1px hsl(217, 16%, 85%) inset, 0px 5px 0px 1px ${(props) => (props.shadow ? props.shadow : 'hsl(217, 16%, 85%)')},
+      0px 5px 10px -1px rgba(0, 0, 0, 0.43) ${(props) => (props.winner ? ',0px 3px 0px 25px rgba(255, 255, 255, 0.062) ,0px 3px 0px 60px rgba(255, 255, 255, 0.034),0px 3px 0px 100px rgba(255, 255, 255, 0.021)' : '')};
     & img {
       width: ${(props) => (props.selected ? '10vw' : '10vw')};
     }
