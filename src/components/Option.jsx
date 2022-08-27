@@ -64,6 +64,13 @@ const OptionButton = styled.button`
       box-shadow: 0px 3px 0px 60px rgba(255, 255, 255, 0.062), 0px 3px 0px 120px rgba(255, 255, 255, 0.034), 0px 3px 0px 200px rgba(255, 255, 255, 0.021);
     }
   }
+  @media screen and (max-width: 375px) {
+    width: ${(props) => (props.selected ? '32vw' : '25vw')};
+    border: ${(props) => (props.selected ? '15px' : '10px')} solid ${(props) => (props.border ? props.border : 'black')};
+    & img {
+      width: ${(props) => (props.selected ? '10vw' : '10vw')};
+    }
+  }
 `
 
 export default function Option(props) {

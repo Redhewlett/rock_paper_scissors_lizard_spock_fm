@@ -34,7 +34,7 @@ export default function Game() {
           </div>
         </section>
       )}
-      <div className='w-full flex justify-end'>
+      <div className='w-full flex justify-center lg:justify-end '>
         <button className='rules uppercase text-white text-lg border-2 rounded-lg py-1 px-8' onClick={displayRules}>
           rules
         </button>

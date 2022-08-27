@@ -184,3 +184,22 @@ body {
 .circle-preview {
   background-color: hsla(0, 0%, 0%, 0.199);
 }
+
+@media screen and (max-width: 375px) {
+  .header {
+    width: 90%;
+    height: 15%;
+    border-radius: 5px;
+    padding: 1.2em 1em;
+  }
+  .header img {
+    width: 15vw;
+    aspect-ratio: 1;
+  }
+  .options {
+    width: 70vw;
+  }
+  .pentagon {
+    width: 60vw;
+  }
+}
