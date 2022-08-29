@@ -64,7 +64,7 @@ const OptionButton = styled.button`
       box-shadow: 0px 3px 0px 60px rgba(255, 255, 255, 0.062), 0px 3px 0px 120px rgba(255, 255, 255, 0.034), 0px 3px 0px 200px rgba(255, 255, 255, 0.021);
     }
   }
-  @media screen and (max-width: 375px) {
+  @media screen and (min-width: 320px) and (max-width: 480px) {
     width: ${(props) => (props.selected ? '32vw' : '25vw')};
     border: ${(props) => (props.selected ? '15px' : '10px')} solid ${(props) => (props.border ? props.border : 'black')};
     box-shadow: 0px 4px 0px 1px hsl(217, 16%, 85%) inset, 0px 5px 0px 1px ${(props) => (props.shadow ? props.shadow : 'hsl(217, 16%, 85%)')},
